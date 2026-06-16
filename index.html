@@ -1539,7 +1539,8 @@ body{font-family:var(--fb);background:var(--void);color:#E0E0FF;min-height:100vh
   #n-wlv { order: 1; }
   #nav .nc { order: 2; }
   #n-rv { order: 4; }
-  #n-pv { order: 5; margin-top: auto; border-top: 1px solid rgba(255,255,255,.04); }
+  #n-spv { order: 5; }
+  #n-pv { order: 6; margin-top: auto; border-top: 1px solid rgba(255,255,255,.04); }
 
   /* Views area - offset by sidebar */
   #views {
@@ -1783,6 +1784,101 @@ body{font-family:var(--fb);background:var(--void);color:#E0E0FF;min-height:100vh
   .tk-name{font-size:15px;}
 }
 @media(min-width:1200px){.dt-wrap{margin:0 30px 22px;}}
+
+/* ── SPONSOR VIEW ── */
+/* Nav sponsor badge */
+.ni-it .sp-badge{position:absolute;top:-4px;right:-4px;width:8px;height:8px;border-radius:50%;background:var(--go);border:2px solid var(--void);animation:pls 2s ease-in-out infinite;}
+
+/* Sponsor hero */
+.sp-hero{margin:14px 15px;background:linear-gradient(135deg,rgba(255,214,10,.08) 0%,rgba(255,149,0,.05) 50%,rgba(255,45,85,.04) 100%);border:1px solid rgba(255,214,10,.22);border-radius:24px;padding:24px 20px 20px;position:relative;overflow:hidden;}
+.sp-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,rgba(255,214,10,.7),rgba(255,149,0,.5),transparent);}
+.sp-hero-orb{position:absolute;top:-40px;right:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,214,10,.08),transparent 70%);pointer-events:none;}
+.sp-hero-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--fb);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--go);background:rgba(255,214,10,.1);border:1px solid rgba(255,214,10,.22);border-radius:20px;padding:4px 11px;margin-bottom:12px;}
+.sp-hero-t{font-family:var(--fd);font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:7px;line-height:1.25;}
+.sp-hero-s{font-size:13px;color:rgba(255,255,255,.38);line-height:1.65;font-weight:400;}
+
+/* Earnings rate table */
+.sp-rates{margin:0 15px 15px;}
+.sp-rate-hd{font-family:var(--fd);font-size:15px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;letter-spacing:-0.025em;margin-bottom:11px;}
+.sp-rate-hd::before{content:'';width:3px;height:13px;background:var(--g3);border-radius:2px;}
+.sp-rate-grid{display:flex;flex-direction:column;gap:8px;}
+.sp-rate-row{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:13px 15px;transition:all .22s;position:relative;overflow:hidden;}
+.sp-rate-row::after{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
+.sp-rate-row.tier-1::after{background:rgba(255,214,10,.5);}
+.sp-rate-row.tier-2::after{background:rgba(0,240,255,.5);}
+.sp-rate-row.tier-3::after{background:rgba(124,58,237,.5);}
+.sp-rate-row.tier-4::after{background:rgba(0,255,140,.5);}
+.sp-rate-row.tier-5::after{background:var(--g4);background-size:200%;animation:gsh 3s linear infinite;}
+.sp-rate-ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.ic-t1{background:rgba(255,214,10,.08);border:1px solid rgba(255,214,10,.18);color:var(--go);}
+.ic-t2{background:rgba(0,240,255,.08);border:1px solid rgba(0,240,255,.18);color:var(--cy);}
+.ic-t3{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.18);color:#A78BFA;}
+.ic-t4{background:rgba(0,255,140,.08);border:1px solid rgba(0,255,140,.18);color:var(--gr);}
+.ic-t5{background:rgba(255,45,85,.08);border:1px solid rgba(255,45,85,.18);color:var(--rd);}
+.sp-rate-info{flex:1;}
+.sp-rate-views{font-size:13px;font-weight:600;color:#fff;letter-spacing:-0.01em;margin-bottom:3px;}
+.sp-rate-sub{font-size:11px;color:rgba(255,255,255,.28);font-weight:400;}
+.sp-rate-earn{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--gr);letter-spacing:-0.03em;}
+.sp-rate-earn span{font-size:11px;font-weight:500;color:rgba(0,255,140,.5);}
+
+/* Social media platforms */
+.sp-socials{margin:0 15px 15px;}
+.sp-social-hd{font-family:var(--fd);font-size:15px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;letter-spacing:-0.025em;margin-bottom:11px;}
+.sp-social-hd::before{content:'';width:3px;height:13px;background:var(--g1);border-radius:2px;}
+.sp-soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
+.sp-soc-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.sp-soc-card:active{transform:scale(.96);}
+.sp-soc-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;opacity:0;transition:opacity .3s;}
+.sp-soc-card:hover::before{opacity:1;}
+.soc-yt::before{background:linear-gradient(90deg,transparent,#FF0000,transparent);}
+.soc-fb::before{background:linear-gradient(90deg,transparent,#1877F2,transparent);}
+.soc-ig::before{background:linear-gradient(90deg,transparent,#E1306C,transparent);}
+.soc-tk::before{background:linear-gradient(90deg,transparent,#69C9D0,transparent);}
+.soc-tw::before{background:linear-gradient(90deg,transparent,#1DA1F2,transparent);}
+.soc-li::before{background:linear-gradient(90deg,transparent,#0A66C2,transparent);}
+.sp-soc-icon{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:19px;}
+.ic-yt{background:rgba(255,0,0,.1);border:1px solid rgba(255,0,0,.2);color:#FF0000;}
+.ic-fb{background:rgba(24,119,242,.1);border:1px solid rgba(24,119,242,.2);color:#1877F2;}
+.ic-ig{background:rgba(225,48,108,.1);border:1px solid rgba(225,48,108,.2);color:#E1306C;}
+.ic-tk{background:rgba(105,201,208,.1);border:1px solid rgba(105,201,208,.2);color:#69C9D0;}
+.ic-tw{background:rgba(29,161,242,.1);border:1px solid rgba(29,161,242,.2);color:#1DA1F2;}
+.ic-li{background:rgba(10,102,194,.1);border:1px solid rgba(10,102,194,.2);color:#0A66C2;}
+.sp-soc-nm{font-size:12px;font-weight:600;color:#fff;letter-spacing:-0.01em;}
+.sp-soc-tag{font-size:10px;color:rgba(255,255,255,.28);font-weight:400;}
+
+/* Video submit form */
+.sp-submit{margin:0 15px 15px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:18px;}
+.sp-sub-hd{font-family:var(--fd);font-size:15px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;letter-spacing:-0.025em;margin-bottom:5px;}
+.sp-sub-hd::before{content:'';width:3px;height:13px;background:var(--g2);border-radius:2px;}
+.sp-sub-desc{font-size:12px;color:rgba(255,255,255,.3);margin-bottom:15px;line-height:1.6;}
+.sp-sel-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:13px;}
+.sp-soc-sel{padding:7px 13px;background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.08);border-radius:var(--rf);color:rgba(255,255,255,.36);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:var(--fb);}
+.sp-soc-sel.on{background:rgba(0,240,255,.08);border-color:rgba(0,240,255,.3);color:var(--cy);}
+.sp-url-wrap{position:relative;margin-bottom:13px;}
+.sp-url-wrap .ii{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:13px;color:rgba(255,255,255,.22);pointer-events:none;}
+.sp-url-inp{width:100%;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:13px;padding:14px 14px 14px 42px;color:#fff;font-family:var(--fb);font-size:14px;outline:none;transition:all .25s;}
+.sp-url-inp::placeholder{color:rgba(255,255,255,.18);}
+.sp-url-inp:focus{border-color:rgba(0,240,255,.4);background:rgba(0,240,255,.03);box-shadow:0 0 0 4px rgba(0,240,255,.06);}
+.sp-note{display:flex;align-items:flex-start;gap:9px;background:rgba(255,214,10,.04);border:1px solid rgba(255,214,10,.12);border-radius:11px;padding:11px 13px;margin-bottom:14px;}
+.sp-note i{color:var(--go);font-size:12px;margin-top:1px;flex-shrink:0;}
+.sp-note p{font-size:12px;color:rgba(255,255,255,.34);line-height:1.6;}
+.btn-sp-sub{width:100%;padding:14px;background:linear-gradient(135deg,#FFD60A,#FF9500);border:none;border-radius:13px;color:#000;font-family:var(--fd);font-size:14px;font-weight:800;cursor:pointer;transition:all .28s;box-shadow:0 5px 22px rgba(255,214,10,.28);letter-spacing:0.01em;}
+.btn-sp-sub:active{transform:scale(.97);box-shadow:0 2px 10px rgba(255,214,10,.2);}
+
+/* Sponsor nav item glow */
+.ni-it#n-spv .ni-ic{position:relative;}
+.ni-it#n-spv.on .ni-ic{background:rgba(255,214,10,.12);color:var(--go);}
+
+@media(min-width:768px){
+  .sp-hero{margin:18px 26px;padding:26px 24px 22px;}
+  .sp-hero-t{font-size:24px;}
+  .sp-rates,.sp-socials,.sp-submit{margin:0 26px 18px;}
+  .sp-soc-grid{grid-template-columns:repeat(6,1fr);}
+}
+@media(min-width:1200px){
+  .sp-hero{margin:22px 30px;}
+  .sp-rates,.sp-socials,.sp-submit{margin:0 30px 22px;}
+}
 
 </style>
 </head>
@@ -2047,6 +2143,7 @@ body{font-family:var(--fb);background:var(--void);color:#E0E0FF;min-height:100vh
   <div class="pm-s"><div class="pm-st">Account</div>
     <div class="mr" onclick="opEditProfile()"><div class="m-ic ic1"><i class="fa-solid fa-user-pen"></i></div><div style="flex:1"><div class="m-tt">Edit Profile</div><div class="m-sb">Update your name & phone</div></div><i class="fa-solid fa-chevron-right m-ar"></i></div>
     <div class="mr" onclick="opV('rv')"><div class="m-ic ic3"><i class="fa-solid fa-share-nodes"></i></div><div style="flex:1"><div class="m-tt">Referral Program</div><div class="m-sb">Earn 15% commission</div></div><i class="fa-solid fa-chevron-right m-ar"></i></div>
+    <div class="mr" onclick="opV('spv')" style="position:relative"><div class="m-ic" style="background:rgba(255,214,10,.08);border:1px solid rgba(255,214,10,.18);color:var(--go);position:relative"><i class="fa-solid fa-handshake"></i><span style="position:absolute;top:-4px;right:-4px;width:7px;height:7px;border-radius:50%;background:var(--go);border:2px solid var(--void);animation:pls 2s ease-in-out infinite;display:block"></span></div><div style="flex:1"><div class="m-tt">Sponsor Program <span style="display:inline-block;padding:2px 7px;border-radius:6px;background:rgba(255,214,10,.1);border:1px solid rgba(255,214,10,.2);color:var(--go);font-size:9px;font-weight:700;letter-spacing:0.05em;margin-left:5px;vertical-align:middle">$1/1K Views</span></div><div class="m-sb">Earn $1 per 1,000 video views</div></div><i class="fa-solid fa-chevron-right m-ar"></i></div>
   </div>
   <div class="pm-s"><div class="pm-st">Finance</div>
     <div class="mr" onclick="opV('xv')"><div class="m-ic ic4"><i class="fa-solid fa-clock-rotate-left"></i></div><div style="flex:1"><div class="m-tt">Transaction History</div><div class="m-sb">All your transactions</div></div><i class="fa-solid fa-chevron-right m-ar"></i></div>
@@ -2381,6 +2478,154 @@ body{font-family:var(--fb);background:var(--void);color:#E0E0FF;min-height:100vh
 </div>
 </div>
 
+<!-- SPONSOR VIEW -->
+<div id="spv" class="view">
+<div class="ah">
+  <div class="ah-bk" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i></div>
+  <div class="ah-t">Sponsorship</div>
+  <div class="ah-acts">
+    <div class="ah-btn" onclick="toast('More info coming soon','i')"><i class="fa-solid fa-circle-info"></i></div>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<div class="sp-hero">
+  <div class="sp-hero-orb"></div>
+  <div class="sp-hero-tag"><i class="fa-solid fa-star"></i> Sponsor Program</div>
+  <div class="sp-hero-t">Sponsor Your Videos &amp; Earn Real Dollars!</div>
+  <div class="sp-hero-s">Upload your content on social media and earn $1 for every 1,000 views. The more views you get, the more you earn — no limits!</div>
+</div>
+
+<!-- Earnings Rate — fixed at $1 per 1,000 views -->
+<div class="sp-rates">
+  <div class="sp-rate-hd">💰 Earnings Rate</div>
+  <!-- Highlight card showing the single fixed rate -->
+  <div style="background:linear-gradient(135deg,rgba(255,214,10,.1),rgba(255,149,0,.07));border:1.5px solid rgba(255,214,10,.35);border-radius:18px;padding:18px 18px 16px;margin-bottom:12px;display:flex;align-items:center;gap:16px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,rgba(255,214,10,.8),transparent);"></div>
+    <div style="width:54px;height:54px;border-radius:16px;background:rgba(255,214,10,.12);border:1.5px solid rgba(255,214,10,.3);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">💰</div>
+    <div style="flex:1;">
+      <div style="font-family:var(--fd);font-size:13px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:4px;">Fixed Rate</div>
+      <div style="font-family:var(--fd);font-size:28px;font-weight:800;color:var(--go);letter-spacing:-0.03em;line-height:1;">$1.00 <span style="font-size:14px;font-weight:500;color:rgba(255,214,10,.5)">per 1,000 Views</span></div>
+      <div style="font-size:12px;color:rgba(255,255,255,.32);margin-top:4px;">Applies to all platforms · No minimum threshold</div>
+    </div>
+  </div>
+  <!-- Quick calculator -->
+  <div class="sp-rate-grid">
+    <div class="sp-rate-row tier-1">
+      <div class="sp-rate-ic ic-t1"><i class="fa-solid fa-eye"></i></div>
+      <div class="sp-rate-info">
+        <div class="sp-rate-views">1,000 Views</div>
+        <div class="sp-rate-sub">Minimum threshold</div>
+      </div>
+      <div class="sp-rate-earn">$1.00 <span>/1K views</span></div>
+    </div>
+    <div class="sp-rate-row tier-2">
+      <div class="sp-rate-ic ic-t2"><i class="fa-solid fa-chart-line"></i></div>
+      <div class="sp-rate-info">
+        <div class="sp-rate-views">5,000 Views</div>
+        <div class="sp-rate-sub">Standard reach</div>
+      </div>
+      <div class="sp-rate-earn">$5.00 <span>/5K views</span></div>
+    </div>
+    <div class="sp-rate-row tier-3">
+      <div class="sp-rate-ic ic-t3"><i class="fa-solid fa-rocket"></i></div>
+      <div class="sp-rate-info">
+        <div class="sp-rate-views">10,000 Views</div>
+        <div class="sp-rate-sub">Popular creator</div>
+      </div>
+      <div class="sp-rate-earn">$10.00 <span>/10K views</span></div>
+    </div>
+    <div class="sp-rate-row tier-4">
+      <div class="sp-rate-ic ic-t4"><i class="fa-solid fa-crown"></i></div>
+      <div class="sp-rate-info">
+        <div class="sp-rate-views">50,000 Views</div>
+        <div class="sp-rate-sub">Viral content</div>
+      </div>
+      <div class="sp-rate-earn">$50.00 <span>/50K views</span></div>
+    </div>
+    <div class="sp-rate-row tier-5">
+      <div class="sp-rate-ic ic-t5"><i class="fa-solid fa-fire"></i></div>
+      <div class="sp-rate-info">
+        <div class="sp-rate-views">100,000+ Views</div>
+        <div class="sp-rate-sub">Mega creator</div>
+      </div>
+      <div class="sp-rate-earn">$100.00 <span>/100K views</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Social Media Platforms -->
+<div class="sp-socials">
+  <div class="sp-social-hd">📱 Supported Platforms</div>
+  <div class="sp-soc-grid">
+    <div class="sp-soc-card soc-yt" onclick="selSpSoc('YouTube',this)">
+      <div class="sp-soc-icon ic-yt"><i class="fa-brands fa-youtube"></i></div>
+      <div class="sp-soc-nm">YouTube</div>
+      <div class="sp-soc-tag">Video</div>
+    </div>
+    <div class="sp-soc-card soc-fb" onclick="selSpSoc('Facebook',this)">
+      <div class="sp-soc-icon ic-fb"><i class="fa-brands fa-facebook-f"></i></div>
+      <div class="sp-soc-nm">Facebook</div>
+      <div class="sp-soc-tag">Reels / Video</div>
+    </div>
+    <div class="sp-soc-card soc-ig" onclick="selSpSoc('Instagram',this)">
+      <div class="sp-soc-icon ic-ig"><i class="fa-brands fa-instagram"></i></div>
+      <div class="sp-soc-nm">Instagram</div>
+      <div class="sp-soc-tag">Reels</div>
+    </div>
+    <div class="sp-soc-card soc-tk" onclick="selSpSoc('TikTok',this)">
+      <div class="sp-soc-icon ic-tk"><i class="fa-brands fa-tiktok"></i></div>
+      <div class="sp-soc-nm">TikTok</div>
+      <div class="sp-soc-tag">Short Video</div>
+    </div>
+    <div class="sp-soc-card soc-tw" onclick="selSpSoc('Twitter',this)">
+      <div class="sp-soc-icon ic-tw"><i class="fa-brands fa-x-twitter"></i></div>
+      <div class="sp-soc-nm">X (Twitter)</div>
+      <div class="sp-soc-tag">Video</div>
+    </div>
+    <div class="sp-soc-card soc-li" onclick="selSpSoc('LinkedIn',this)">
+      <div class="sp-soc-icon ic-li"><i class="fa-brands fa-linkedin-in"></i></div>
+      <div class="sp-soc-nm">LinkedIn</div>
+      <div class="sp-soc-tag">Video</div>
+    </div>
+  </div>
+</div>
+
+<!-- Video Submit Form -->
+<div class="sp-submit">
+  <div class="sp-sub-hd">🎬 Submit Your Video Link</div>
+  <div class="sp-sub-desc">Select your platform and paste your video link. We will review and process payment based on verified view count ($1 per 1,000 views).</div>
+
+  <!-- Platform selector pills -->
+  <div class="sp-sel-wrap" id="sp-pills">
+    <div class="sp-soc-sel on" onclick="selPill('YouTube',this)">YouTube</div>
+    <div class="sp-soc-sel" onclick="selPill('Facebook',this)">Facebook</div>
+    <div class="sp-soc-sel" onclick="selPill('Instagram',this)">Instagram</div>
+    <div class="sp-soc-sel" onclick="selPill('TikTok',this)">TikTok</div>
+    <div class="sp-soc-sel" onclick="selPill('Twitter',this)">X (Twitter)</div>
+    <div class="sp-soc-sel" onclick="selPill('LinkedIn',this)">LinkedIn</div>
+  </div>
+
+  <!-- Video URL input -->
+  <div class="sp-url-wrap">
+    <i class="ii fa-solid fa-link"></i>
+    <input type="url" class="sp-url-inp" id="sp-video-url" placeholder="Paste your video link here..." autocomplete="off">
+  </div>
+
+  <!-- Note -->
+  <div class="sp-note">
+    <i class="fa-solid fa-circle-info"></i>
+    <p>Your video must be set to <strong>Public</strong>. After submission, our team will review and verify the view count within 24 hours. Payment is processed at <strong>$1.00 per 1,000 verified views</strong>.</p>
+  </div>
+
+  <button class="btn-sp-sub" onclick="submitSponsor()">
+    <i class="fa-solid fa-paper-plane" style="margin-right:8px"></i>Submit Video
+  </button>
+</div>
+
+<div style="height:15px"></div>
+</div>
+
 <!-- HISTORY -->
 <div id="xv" class="view">
 <div class="ah"><div class="ah-bk" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i></div><div class="ah-t">Transaction History</div></div>
@@ -2620,9 +2865,9 @@ function showApp(){
   requestAnimationFrame(()=>opV("hv"));
 }
 
-function opV(id){const vs=["hv","wlv","iv","rv","pv","dv","wv","xv"];_pv=_cv;vs.forEach(v=>{const el=document.getElementById(v);if(el)el.classList.toggle("on",v===id);});_cv=id;updNav(id);if(id==="rv")ldRef();if(id==="dv")updDA(_dnet);if(id==="wv"&&window._ud){const b=(window._ud.balance||0).toFixed(2);document.getElementById("wab").textContent="$"+b;const heroEl=document.getElementById("wab-hero");if(heroEl)heroEl.textContent="$"+b;}if(id==="xv"){if(window.ldTx){window.ldTx();}}}
+function opV(id){const vs=["hv","wlv","iv","rv","pv","dv","wv","xv","spv"];_pv=_cv;vs.forEach(v=>{const el=document.getElementById(v);if(el)el.classList.toggle("on",v===id);});_cv=id;updNav(id);if(id==="rv")ldRef();if(id==="dv")updDA(_dnet);if(id==="wv"&&window._ud){const b=(window._ud.balance||0).toFixed(2);document.getElementById("wab").textContent="$"+b;const heroEl=document.getElementById("wab-hero");if(heroEl)heroEl.textContent="$"+b;}if(id==="xv"){if(window.ldTx){window.ldTx();}}}
 function goBack(){opV(["dv","wv","xv"].includes(_pv)?"hv":(_pv||"hv"));}
-function updNav(id){const nm={"hv":"n-hv","wlv":"n-wlv","rv":"n-rv","pv":"n-pv"};document.querySelectorAll(".ni-it").forEach(n=>n.classList.remove("on"));const ni=nm[id];if(ni){const el=document.getElementById(ni);if(el){el.classList.add("on");// iOS haptic bounce effect
+function updNav(id){const nm={"hv":"n-hv","wlv":"n-wlv","rv":"n-rv","pv":"n-pv","spv":"n-spv"};document.querySelectorAll(".ni-it").forEach(n=>n.classList.remove("on"));const ni=nm[id];if(ni){const el=document.getElementById(ni);if(el){el.classList.add("on");// iOS haptic bounce effect
 const ic=el.querySelector(".ni-ic");if(ic){ic.style.animation="none";requestAnimationFrame(()=>{ic.style.animation="nav-pop .4s cubic-bezier(.34,1.56,.64,1)";});}};}}
 
 function swTab(t){
@@ -2781,6 +3026,7 @@ if(ud.activePlan){
 }
 const bdg=document.getElementById("pbd");if(ud.activePlan){bdg.innerHTML='<i class="fa-solid fa-bolt"></i> '+ud.activePlan.split("_").map(w=>w[0].toUpperCase()+w.slice(1)).join(" ");}
 if(ud.isAdmin||ADMINS.includes(ud.email)){const ab=document.getElementById("admbtn");if(ab)ab.style.display="flex";}
+loadTaskLinksCache();
 initTasks(ud);
 loadPl();}
 
@@ -2806,7 +3052,7 @@ async function confPlan(){
     // Reset task data for new plan
     await updateDoc(doc(db,"users",window._cu.uid),{taskData:{date:"",t1:false,t2:false,t3:false,claimed:false}});
     clM("pm");
-    showSuc("Plan Activated!",_pm.name+" is now active","$"+_pm.daily+"/day",[["Plan",_pm.name],["Daily Income","$"+_pm.daily],["Duration",_pm.duration+" Days"],["Status","Active ✓"]]);
+    toast("✅ "+_pm.name+" activated! $"+_pm.daily+"/day","s");
   }catch(e){
     console.error("confPlan error:",e);
     let msg = e.message || "Unknown error";
@@ -3003,35 +3249,37 @@ function renderTasks() {
   }
 }
 
+// Task links cache — admin panel থেকে Firebase এ save করা links এখানে থাকবে
+let _taskLinks = { 1: '', 2: '', 3: '' };
+
+// App load এর সময় একবার task links load করে cache করে রাখা
+async function loadTaskLinksCache() {
+  try {
+    const snap = await window._fb.getDoc(window._fb.doc(window._fb.db, 'settings', 'dailyTasks'));
+    if (snap.exists()) {
+      const d = snap.data();
+      _taskLinks[1] = d.task1Link || '';
+      _taskLinks[2] = d.task2Link || '';
+      _taskLinks[3] = d.task3Link || '';
+    }
+  } catch(e) {}
+}
+
 function doTask(n) {
   if (_tkDone[n-1]) return;
-  // Load task link from Firebase settings then open
-  const {doc, getDoc, db} = window._fb;
-  getDoc(doc(db, 'settings', 'dailyTasks')).then(snap => {
-    const d = snap.exists() ? snap.data() : {};
-    const linkMap = { 1: d.task1Link, 2: d.task2Link, 3: d.task3Link };
-    const link = linkMap[n];
-    if (link) {
-      window.open(link, '_blank');
-    } else {
-      // Default fallback actions
-      if (n === 1) { /* already on home - market visible */ }
-      if (n === 2) { opV('wlv'); setTimeout(()=>opV('hv'), 600); }
-      if (n === 3) { cpRef(); }
-    }
-    _tkDone[n-1] = true;
-    saveTasks();
-    renderTasks();
-    toast('Task ' + n + ' completed! ✓', 's');
-  }).catch(() => {
-    // Fallback if Firebase fails
+
+  const link = _taskLinks[n];
+  if (link) {
+    window.open(link, '_blank');
+  } else {
     if (n === 2) { opV('wlv'); setTimeout(()=>opV('hv'), 600); }
     if (n === 3) { cpRef(); }
-    _tkDone[n-1] = true;
-    saveTasks();
-    renderTasks();
-    toast('Task ' + n + ' completed! ✓', 's');
-  });
+  }
+
+  _tkDone[n-1] = true;
+  saveTasks();
+  renderTasks();
+  toast('Task ' + n + ' completed! ✓', 's');
 }
 
 async function claimDaily() {
@@ -3063,8 +3311,7 @@ async function claimDaily() {
     _tkClaimed = true;
     renderTasks();
     ldTx();
-    showSuc('Daily Income Claimed!', 'All tasks completed', '$' + income.toFixed(2),
-      [['Earned', '$' + income.toFixed(2)], ['Tasks', '3/3 Done'], ['Next Reset', 'Midnight UTC']]);
+    toast('✅ $' + income.toFixed(2) + ' Daily Income Claimed!', 's');
   } catch(e) {
     toast('Error: ' + e.message, 'e');
     btn.disabled = false;
@@ -3079,6 +3326,61 @@ function saveTasks() {
   updateDoc(doc(db, 'users', window._cu.uid), {
     taskData: { date: today, t1: _tkDone[0], t2: _tkDone[1], t3: _tkDone[2], claimed: _tkClaimed }
   }).catch(() => {});
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ─── SPONSOR SYSTEM ─────────────────────────────────────────────────────────
+let _spSelPlatform = 'YouTube';
+
+function selSpSoc(platform, el) {
+  _spSelPlatform = platform;
+  // Update pill selection
+  document.querySelectorAll('.sp-soc-sel').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('#sp-pills .sp-soc-sel').forEach(p => {
+    if (p.textContent.trim() === platform || (platform === 'Twitter' && p.textContent.includes('Twitter'))) {
+      p.classList.add('on');
+    }
+  });
+  // Highlight card
+  document.querySelectorAll('.sp-soc-card').forEach(c => c.style.borderColor = '');
+  if (el) el.style.borderColor = 'rgba(0,240,255,.4)';
+  toast(platform + ' selected ✓', 'i');
+}
+
+function selPill(platform, el) {
+  _spSelPlatform = platform;
+  document.querySelectorAll('.sp-soc-sel').forEach(p => p.classList.remove('on'));
+  el.classList.add('on');
+}
+
+async function submitSponsor() {
+  if (!window._cu) { toast('Please log in first', 'e'); return; }
+  const url = document.getElementById('sp-video-url').value.trim();
+  if (!url) { toast('Please enter your video link', 'e'); return; }
+  if (!url.startsWith('http')) { toast('Please enter a valid link (http/https)', 'e'); return; }
+
+  const btn = document.querySelector('.btn-sp-sub');
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+
+  try {
+    const {addDoc, collection, db} = window._fb;
+    await addDoc(collection(db, 'sponsorSubmissions'), {
+      uid: window._cu.uid,
+      platform: _spSelPlatform,
+      videoUrl: url,
+      status: 'pending',
+      submittedAt: new Date().toISOString()
+    });
+    document.getElementById('sp-video-url').value = '';
+    toast('✅ Submitted successfully! Our team will review within 24 hours.', 's');
+  } catch(e) {
+    toast('Error: ' + e.message, 'e');
+  } finally {
+    btn.textContent = '📨 Submit Video';
+    btn.innerHTML = '<i class="fa-solid fa-paper-plane" style="margin-right:8px"></i>Submit Video';
+    btn.disabled = false;
+  }
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
