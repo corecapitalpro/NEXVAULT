@@ -3005,15 +3005,33 @@ function renderTasks() {
 
 function doTask(n) {
   if (_tkDone[n-1]) return;
-  // Task actions
-  if (n === 1) { /* just scroll to market — already on home */ }
-  if (n === 2) { opV('wlv'); setTimeout(()=>opV('hv'), 600); }
-  if (n === 3) { cpRef(); }
-
-  _tkDone[n-1] = true;
-  saveTasks();
-  renderTasks();
-  toast('Task ' + n + ' completed! ✓', 's');
+  // Load task link from Firebase settings then open
+  const {doc, getDoc, db} = window._fb;
+  getDoc(doc(db, 'settings', 'dailyTasks')).then(snap => {
+    const d = snap.exists() ? snap.data() : {};
+    const linkMap = { 1: d.task1Link, 2: d.task2Link, 3: d.task3Link };
+    const link = linkMap[n];
+    if (link) {
+      window.open(link, '_blank');
+    } else {
+      // Default fallback actions
+      if (n === 1) { /* already on home - market visible */ }
+      if (n === 2) { opV('wlv'); setTimeout(()=>opV('hv'), 600); }
+      if (n === 3) { cpRef(); }
+    }
+    _tkDone[n-1] = true;
+    saveTasks();
+    renderTasks();
+    toast('Task ' + n + ' completed! ✓', 's');
+  }).catch(() => {
+    // Fallback if Firebase fails
+    if (n === 2) { opV('wlv'); setTimeout(()=>opV('hv'), 600); }
+    if (n === 3) { cpRef(); }
+    _tkDone[n-1] = true;
+    saveTasks();
+    renderTasks();
+    toast('Task ' + n + ' completed! ✓', 's');
+  });
 }
 
 async function claimDaily() {
