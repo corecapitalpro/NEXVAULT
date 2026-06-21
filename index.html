@@ -5,7 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#000008">
-<title>NexVault</title>
+<title>NexVault | Digital Wealth Platform</title>
+<meta name="description" content="Join NexVault and start earning daily returns. Secure deposits, transparent plans, real-time payouts, and 15% referral commission.">
+<!-- Open Graph / Social Share Preview -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NexVault">
+<meta property="og:title" content="Join NexVault & Start Earning Daily Returns">
+<meta property="og:description" content="Secure deposits, transparent plans & real-time payouts. Sign up with my referral link and get started today!">
+<meta property="og:image" content="https://www.nexvaultpro.site/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://www.nexvaultpro.site">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Join NexVault & Start Earning Daily Returns">
+<meta name="twitter:description" content="Secure deposits, transparent plans & real-time payouts. Sign up with my referral link and get started today!">
+<meta name="twitter:image" content="https://www.nexvaultpro.site/og-image.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
@@ -1931,7 +1946,7 @@ body{font-family:var(--fb);background:var(--void);color:#E0E0FF;min-height:100vh
       </div>
     </div>
     <div class="ig"><label class="il">Password</label><div class="iw" style="position:relative"><i class="ii fa-solid fa-lock"></i><input type="password" id="rp" class="if" placeholder="Create password (6+ chars)" style="padding-right:44px" autocomplete="new-password"><i class="pw-e fa-solid fa-eye" onclick="twPw('rp',this)"></i></div></div>
-    <div class="ig"><label class="il">Referral Code <span style="opacity:.45;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label><div class="iw"><i class="ii fa-solid fa-share-nodes"></i><input type="text" id="rr" class="if" placeholder="e.g. NV-ABC123"></div></div>
+    <div class="ig" id="rr-group"><label class="il">Referral Code <span style="opacity:.45;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label><div class="iw"><i class="ii fa-solid fa-share-nodes"></i><input type="text" id="rr" class="if" placeholder="e.g. NV-ABC123"></div><div id="rr-locked-note" style="display:none;align-items:center;gap:6px;margin-top:7px;font-size:12px;color:var(--gr);font-weight:500"><i class="fa-solid fa-lock"></i><span>Referral code applied & locked</span></div></div>
     <button class="btn-as" id="sb" onclick="doSignup()"><i class="fa-solid fa-rocket" style="margin-right:8px"></i>Create My Account</button>
     <div class="auth-n">Already have an account? <span class="alink" onclick="swTab('login')">Sign in</span></div>
   </div>
@@ -2722,6 +2737,12 @@ let _unsub=null; // firestore listener unsubscribe
 onAuthStateChanged(auth,async(u)=>{
   window._fbR=true;
   hideSpl();
+  if(u&&window._pRef){
+    // A referral link was opened while an old session was still active.
+    // Sign that session out so the visitor lands on the locked signup form.
+    try{await signOut(auth);}catch(e){}
+    return;
+  }
   if(u){
     window._cu=u;
     window._txs=[];
@@ -2836,7 +2857,17 @@ const PLANS=[
 const CNTRY=[{f:"🇧🇩",n:"Bangladesh",c:"+880"},{f:"🇺🇸",n:"United States",c:"+1"},{f:"🇬🇧",n:"United Kingdom",c:"+44"},{f:"🇮🇳",n:"India",c:"+91"},{f:"🇵🇰",n:"Pakistan",c:"+92"},{f:"🇳🇬",n:"Nigeria",c:"+234"},{f:"🇨🇳",n:"China",c:"+86"},{f:"🇧🇷",n:"Brazil",c:"+55"},{f:"🇷🇺",n:"Russia",c:"+7"},{f:"🇩🇪",n:"Germany",c:"+49"},{f:"🇫🇷",n:"France",c:"+33"},{f:"🇯🇵",n:"Japan",c:"+81"},{f:"🇦🇪",n:"UAE",c:"+971"},{f:"🇸🇦",n:"Saudi Arabia",c:"+966"},{f:"🇹🇷",n:"Turkey",c:"+90"},{f:"🇲🇾",n:"Malaysia",c:"+60"},{f:"🇮🇩",n:"Indonesia",c:"+62"},{f:"🇵🇭",n:"Philippines",c:"+63"},{f:"🇹🇭",n:"Thailand",c:"+66"},{f:"🇻🇳",n:"Vietnam",c:"+84"},{f:"🇿🇦",n:"South Africa",c:"+27"},{f:"🇬🇭",n:"Ghana",c:"+233"},{f:"🇰🇪",n:"Kenya",c:"+254"},{f:"🇦🇷",c:"+54",n:"Argentina"},{f:"🇲🇽",c:"+52",n:"Mexico"},{f:"🇨🇦",c:"+1",n:"Canada"},{f:"🇦🇺",c:"+61",n:"Australia"}];
 let _cv="hv",_pv="hv",_dnet="TRC20",_wnet="TRC20",_pm=null,_pmM="TRC20",_bal=true;
 const q=new URLSearchParams(location.search);window._pRef=q.get("ref");
-const rr=document.getElementById("rr");if(rr&&window._pRef)rr.value=window._pRef;
+const rr=document.getElementById("rr");
+if(rr&&window._pRef){
+  rr.value=window._pRef.toUpperCase();
+  rr.readOnly=true;
+  rr.style.opacity="0.75";
+  rr.style.cursor="not-allowed";
+  rr.style.borderColor="rgba(0,255,140,.4)";
+  rr.style.background="rgba(0,255,140,.04)";
+  const lockedNote=document.getElementById("rr-locked-note");
+  if(lockedNote)lockedNote.style.display="flex";
+}
 
 function showScr(id){
   document.querySelectorAll(".screen").forEach(s=>{
@@ -2853,6 +2884,7 @@ function showScr(id){
     s.style.transition="opacity .35s cubic-bezier(.4,0,.2,1), transform .35s cubic-bezier(.4,0,.2,1)";
     requestAnimationFrame(()=>{requestAnimationFrame(()=>{s.style.opacity="";s.style.transform="";setTimeout(()=>{s.style.transition="opacity .4s ease";},350);});});
   }
+  if(id==="auth"&&window._pRef){swTab("signup");}
 }
 function hideSpl(){
   const s=document.getElementById("splash");
@@ -3012,7 +3044,7 @@ document.addEventListener("click",()=>ccd.classList.remove("on"));
 function updUI(ud){if(!ud)return;const b=ud.balance||0,e=ud.totalEarned||0,r=ud.refBalance||0,dep=ud.totalDeposited||0;
 document.getElementById("hb").textContent=_bal?b.toFixed(2):"••••";document.getElementById("hu").textContent=_bal?"$"+b.toFixed(2):"$••••";document.getElementById("wb").textContent=_bal?b.toFixed(2):"••••";document.getElementById("wu").textContent=_bal?b.toFixed(2):"••••";document.getElementById("he").textContent="$"+e.toFixed(2);document.getElementById("ht").textContent="$"+(ud.dailyIncome||0).toFixed(2);document.getElementById("hrf").textContent=ud.referrals||0;document.getElementById("hpl").textContent=ud.activePlan?ud.activePlan.split("_").map(w=>w[0].toUpperCase()+w.slice(1)).join(" "):"None";document.getElementById("wav").textContent="$"+b.toFixed(2);document.getElementById("wea").textContent="$"+e.toFixed(2);document.getElementById("wrc").textContent="$"+r.toFixed(2);document.getElementById("wdp").textContent="$"+dep.toFixed(2);document.getElementById("aa").textContent="$"+b.toFixed(2);document.getElementById("ai2").textContent="$"+(ud.investedAmount||0).toFixed(2);document.getElementById("ar2").textContent="$"+r.toFixed(2);document.getElementById("au1").textContent=b.toFixed(2);document.getElementById("au1u").textContent="$"+b.toFixed(2);document.getElementById("au2").textContent="0.00";document.getElementById("au2u").textContent="$0.00";
 const nm=ud.name||"User";const ini=nm[0].toUpperCase();document.getElementById("hav").textContent=ini;document.getElementById("pava").textContent=ini;document.getElementById("pnm").textContent=nm;document.getElementById("pid").textContent="ID: "+ud.uid.substr(0,8).toUpperCase();document.getElementById("psb").textContent="$"+b.toFixed(0);document.getElementById("pse").textContent="$"+e.toFixed(0);document.getElementById("psr").textContent=ud.referrals||0;document.getElementById("rcn").textContent=ud.referrals||0;document.getElementById("rea").textContent="$"+r.toFixed(0);document.getElementById("rpd").textContent="$0";document.getElementById("wab").textContent="$"+b.toFixed(2);
-if(ud.refCode){const baseUrl=(window.location.origin+window.location.pathname).replace(/\/index\.html$/,"");document.getElementById("rld").textContent=baseUrl+"?ref="+ud.refCode;document.getElementById("ref-code-display").textContent=ud.refCode;}
+if(ud.refCode){const baseUrl="https://www.nexvaultpro.site";document.getElementById("rld").textContent=baseUrl+"?ref="+ud.refCode;document.getElementById("ref-code-display").textContent=ud.refCode;}
 const nb=document.getElementById("nc");if(ud.unreadNotifs>0){nb.style.display="flex";nb.textContent=ud.unreadNotifs;}else nb.style.display="none";
 if(ud.activePlan){
   document.getElementById("pnt").textContent="Active: "+ud.activePlan.split("_").map(w=>w[0].toUpperCase()+w.slice(1)).join(" ");
@@ -3138,7 +3170,7 @@ async function ldRef(){
 }
 function cpRef(){const l=document.getElementById("rld").textContent;navigator.clipboard.writeText(l).then(()=>toast("Referral link copied!","s")).catch(()=>toast("Copy failed","e"));}
 function cpCode(){const c=document.getElementById("ref-code-display").textContent;navigator.clipboard.writeText(c).then(()=>toast("Referral code copied! "+c,"s")).catch(()=>toast("Copy failed","e"));}
-function shRef(){const l=document.getElementById("rld").textContent;if(navigator.share)navigator.share({title:"Join NexVault",text:"Join NexVault and earn daily returns!",url:l});else cpRef();}
+function shRef(){const l=document.getElementById("rld").textContent;const code=document.getElementById("ref-code-display")?document.getElementById("ref-code-display").textContent:"";if(navigator.share){navigator.share({title:"Join NexVault — Earn Daily Returns",text:"I'm using NexVault to earn daily returns on secure deposits. Use my referral code "+code+" and join with my link:",url:l}).catch(()=>{});}else{cpRef();}}
 function twBal(){_bal=!_bal;if(window._ud)updUI(window._ud);}
 function opNP(){document.getElementById("no").classList.add("on");document.getElementById("np").classList.add("on");}
 function clNP(){document.getElementById("no").classList.remove("on");document.getElementById("np").classList.remove("on");}
